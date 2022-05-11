@@ -25,7 +25,7 @@ def post_comment(comment):
     g = Github(git_token)
     repo = g.get_repo(git_repo)
     issue = repo.get_issue(number=issue_number)
-    issue.create_comment(f"Logs \n```\n{comment}\n```")
+    issue.create_comment(f"Logs \n```\n{comment}\n```\nAutomated by [this](https://github.com/plowsof/post-libera-meeting-logs)")
 
 def get_meeting_log():
     global room, moderator_name, msg_begin, msg_end
