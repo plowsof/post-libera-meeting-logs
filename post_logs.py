@@ -9,7 +9,6 @@ import pprint
 git_token = "hunter2hunter2"
 issue_number = 704
 git_repo = "monero-project/meta"
-
 moderator_name = "plowsof[m]"
 room = "monero-community"
 
@@ -21,8 +20,9 @@ def post_comment(comment):
     g = Github(git_token)
     repo = g.get_repo(git_repo)
     issue = repo.get_issue(number=issue_number)
+    print(issue.state) 
     issue.create_comment(f"Logs \n```\n{comment}\n```\nAutomated by [this](https://github.com/plowsof/post-libera-meeting-logs)")
-
+    issue.edit(state="closed")
 def get_meeting_log():
     global room, moderator_name, msg_begin, msg_end
     todays_date = datetime.datetime.now().strftime("%Y%m%d")
@@ -49,5 +49,5 @@ def get_meeting_log():
                 post_comment(log)
                 break
                 
-
 get_meeting_log()
+
