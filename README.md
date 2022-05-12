@@ -10,4 +10,6 @@ modify the variables accordingly
 msg_begin = "Meeting begin"
 msg_end = "Meeting over"
 moderator_name = "plowsof[m]" #exactly how it appears on libera logs
+issue_number = 1 
 ```
+run the script at the end of the meeting, making sure that you have typed the ```msg_end``` string
