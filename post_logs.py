@@ -23,6 +23,7 @@ def post_comment(comment):
     print(issue.state) 
     issue.create_comment(f"Logs \n```\n{comment}\n```\nAutomated by [this](https://github.com/plowsof/post-libera-meeting-logs)")
     issue.edit(state="closed")
+    
 def get_meeting_log():
     global room, moderator_name, msg_begin, msg_end
     todays_date = datetime.datetime.now().strftime("%Y%m%d")
