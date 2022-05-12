@@ -1,4 +1,9 @@
 # post-libera-meeting-logs
+
+you need pygithub:
+```
+pip install PyGithub
+```
 Auto post the logs to the correct monero meeting issue + close it too
 
 The git token can be obtained here https://github.com/settings/tokens
