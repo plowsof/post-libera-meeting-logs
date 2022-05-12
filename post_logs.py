@@ -7,18 +7,14 @@ import pprint
 #https://libera.monerologs.net/monero-dev/20220511
 
 git_token = "hunter2hunter2"
-#git_repo =  "monero-project/meta"
-issue_number = 1 
-git_repo = "plowsof/multi-crypto-freelance"
+issue_number = 704
+git_repo = "monero-project/meta"
 
 moderator_name = "plowsof[m]"
 room = "monero-community"
 
-#msg_begin = "meeting start"
-#msg_end = "meeting over"
-
-msg_begin = "Shall we do one of those community meeting thingys this Sunday orr?"
-msg_end = "cheekyleeks i thought i was going to get away with not moderating one if nobody said anything 😁 https://github.com/monero-project/meta/issues/704"
+msg_begin = "meeting start"
+msg_end = "meeting over"
 
 def post_comment(comment):
     global issue_number, git_repo, git_token
