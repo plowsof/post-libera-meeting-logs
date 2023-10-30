@@ -2,7 +2,6 @@ from github import Github
 import requests 
 import datetime
 import pprint
-import textwrap
 import pprint
 #https://libera.monerologs.net/monero-community/20220511/raw
 #https://libera.monerologs.net/monero-research-lab/20220511
@@ -40,23 +39,23 @@ def get_meeting_log():
     for line in r.iter_lines():
         if line: 
             line = line.decode("utf-8")
-            split = line.split()
-            username = split[1]
-            comment = line.split(f"{split[0]} {split[1]}")[1][1:]
-            if username == f"<{moderator_name}>":
+            split = line.split(' ')[1:]
+            comment = ' '.join(split)
+            comment = comment.replace("<m-relay> ", "")
+            split = comment.split(' ')
+            username = split[0].replace("<","< ")
+            username = username.replace(">"," >")
+            split[0] = "> __" + username + "__"
+            comment = ' '.join(split) + "     \n"
+            if username == f"< {moderator_name}> ":
                 if msg_begin in comment:
-                    print("begin")
                     meeting_status = "active"
                 if msg_end in comment:
                     meeting_status = "ended"
-            wrapped = textwrap.wrap(line, width=110)
-            line = ""
-            for x in wrapped:
-                line += x + "\n"
             if meeting_status == "active":
-                log += f"{line}\n"
+                log += f"{comment}\n"
             if meeting_status == "ended":
-                log += f"{line}\n"
+                log += f"{comment}\n"
                 post_comment(log)
                 break
 get_meeting_log()
